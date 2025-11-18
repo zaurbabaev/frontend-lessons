@@ -1,18 +1,65 @@
-*,
-*::after,
-*::before {
+* {
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url(../fonts/OpenSans-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url(../fonts/OpenSans-Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url(../fonts/OpenSans-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+  font-family: OpenSans, sans-serif;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 47px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 31px;
+}
+.container {
+  width: 80%;
+  max-width: 1140px;
+  margin-inline: auto;
 }
 
 section {
+  max-width: 750px;
   text-align: center;
+  margin-inline: auto;
   margin-bottom: 40px;
+}
+
+p {
+  line-height: 1.8;
+}
+section p {
+  font-size: 16px;
 }
 
 .flex-box {
@@ -20,11 +67,30 @@ section {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 80%;
-  margin-inline: auto;
   gap: 20px;
+}
+
+.flex-box__item {
+  width: calc(33.33% - 40px);
+  min-width: 300px;
 }
 
 .team_name {
   text-align: center;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+a {
+  font-weight: 700;
+  line-height: 21px;
+  color: rgb(99, 99, 99);
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
 }
