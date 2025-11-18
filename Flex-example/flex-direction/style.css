@@ -1,0 +1,31 @@
+.flex-container {
+  display: flex;
+  border: 1px solid #ccc;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-item {
+  text-align: center;
+  font-size: 1.1em;
+  padding: 1.5em;
+  color: #fff;
+}
+
+.color1 {
+  background-color: #675ba7;
+}
+
+.color2 {
+  background-color: #9bc850;
+}
+
+.color3 {
+  background-color: #a62e5c;
+}

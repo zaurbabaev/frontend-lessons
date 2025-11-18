@@ -1,0 +1,36 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+.flex-item {
+  text-align: center;
+  font-size: 1em;
+  padding: 1.5em;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.group1{
+  order: -1;
+}
+.group2{
+  order: 1;
+}
+
+.color1 {
+  background-color: #675ba7;
+}
+
+.color2 {
+  background-color: #9bc850;
+}
+.color3 {
+  background-color: #a62e5c;
+}
+.color4 {
+  background-color: #2a9fbc;
+}
+.color5 {
+  background-color: #f15b2a;
+}
+

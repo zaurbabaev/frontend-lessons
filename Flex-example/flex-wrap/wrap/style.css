@@ -1,0 +1,40 @@
+.flex-container {
+  display: flex;
+  border: 0.25em solid #000;
+  width: 60%;
+  height: 8.25em;
+  flex-wrap: wrap;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-item {
+  text-align: center;
+  font-size: 1em;
+  padding: 1.5em;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.color1 {
+  background-color: #675ba7;
+}
+
+.color2 {
+  background-color: #9bc850;
+}
+.color3 {
+  background-color: #a62e5c;
+}
+.color4 {
+  background-color: #2a9fbc;
+}
+.color5 {
+  background-color: #f15b2a;
+}

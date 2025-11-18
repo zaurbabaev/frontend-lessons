@@ -1,0 +1,38 @@
+div {
+  background-color: blue;
+  width: 400px;
+  height: 400px;
+}
+
+.box-1 {
+  background-color: blueviolet;
+}
+
+.text-1 {
+  color: white;
+  font-size: 32px;
+}
+
+.first_div {
+  background-color: red;
+  width: 600px;
+  height: 200px;
+}
+
+.first_div__child {
+  background-color: grey;
+  width: 100px;
+  height: 100px;
+}
+
+.second_div{
+    background-color:blue;
+    width: 300px;
+    height: 400px;
+}
+
+.second_div__child {
+  background-color: grey;
+  width: 100px;
+  height: 250px;
+  

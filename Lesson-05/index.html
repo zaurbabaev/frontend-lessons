@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="tel"],
+      input[type="number"],
+      textarea,
+      select {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form action="">
+        <table border="1" style="margin: auto">
+          <tbody>
+            <tr>
+              <th><label for="f_n">First Name</label></th>
+              <td>
+                <input type="text" name="first_name" id="f_n" />
+              </td>
+            </tr>
+            <tr>
+              <th><label for="l_n">Last Name</label></th>
+              <td><input type="text" name="last_name" id="l_n" /></td>
+            </tr>
+            <tr>
+              <th><label for="email">Email</label></th>
+              <td><input type="email" name="email" id="email" /></td>
+            </tr>
+            <tr>
+              <th><label for="pass">Password</label></th>
+              <td><input type="password" name="password" id="pass" /></td>
+            </tr>
+            <tr>
+              <th><label for="re_pass">Re_Enter Password</label></th>
+              <td><input type="password" name="re_password" id="re_pass" /></td>
+            </tr>
+            <tr>
+              <th rowspan="2"><label for="gen">Gender</label></th>
+              <td>
+                <label for="male">
+                  <input type="radio" name="gender" id="male" /><span
+                    >Male</span
+                  >
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="female">
+                  <input type="radio" name="gender" id="female" /><span
+                    >Female</span
+                  >
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <th><label for="age">Age</label></th>
+              <td><input type="number" name="age" id="age" /></td>
+            </tr>
+            <tr>
+              <th><label for="phone">Phone number</label></th>
+              <td><input type="tel" name="phone" id="phone" /></td>
+            </tr>
+            <tr>
+              <th><label for="address">Address</label></th>
+              <td>
+                <textarea
+                  name="address"
+                  id="address"
+                  style="height: 100px"
+                ></textarea>
+              </td>
+            </tr>
+            <tr>
+              <th><label for="state">State</label></th>
+              <td><input type="text" name="state" id="state" /></td>
+            </tr>
+            <tr>
+              <th><label for="country">Country</label></th>
+              <td>
+                <select name="country" id="country"> 
+                  <option>-Choose your country-</option>
+                  <option>Azərbaycan</option>
+                  <option>Rusiya</option>
+                  <option>Gürcüstan</option>
+                  <option>Türkiyə</option>
+                  <option>Bolqarıstan</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>Language Know</th>
+              <td>
+                <input type="checkbox" name="lang" /> English
+                <input type="checkbox" name="lang" /> Kannada
+                <input type="checkbox" name="lang" /> Hindi
+                <input type="checkbox" name="lang" /> Telugu
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <input type="checkbox" name="desc" id="desc" />
+                Hereby I declare all the given details are true
+                <br />
+                <br />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: right">
+                Login in to <a href="https://www.google.com">Google</a> website
+              </td>
+            </tr>
+            <br />
+          </tbody>
+        </table>
+        <br /><br />
+        <div style="margin: 0; text-align: center">
+          <input type="submit" value="Register" />
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

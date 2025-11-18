@@ -1,0 +1,19 @@
+.parent {
+  max-width: 1320px;
+  width: 70%;
+  height: 800px;
+  margin: 40px auto;
+  padding: 4px;
+  display: flex;
+  border: 1px solid red;
+  /* justify-content: center; */
+  align-items: end;
+}
+
+.parent div {
+  width: 25%;
+  height: 250px;
+  background-color: brown;
+  font-size: 40px;
+  color: #fff;
+}

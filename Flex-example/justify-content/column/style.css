@@ -1,0 +1,45 @@
+.flex-container {
+  display: flex;
+  height: 300px;
+  border: 1px solid #000;
+}
+
+.column {
+  flex-direction: column;
+}
+.flex-end {
+  justify-content: flex-end;
+}
+
+.center {
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.flex-item {
+  text-align: center;
+  font-size: 1em;
+  padding: 1.5em;
+  color: #fff;
+}
+
+.color1 {
+  background-color: #675ba7;
+}
+
+.color2 {
+  background-color: #9bc850;
+}
+.color3 {
+  background-color: #a62e5c;
+}
+.color4 {
+  background-color: #2a9fbc;
+}

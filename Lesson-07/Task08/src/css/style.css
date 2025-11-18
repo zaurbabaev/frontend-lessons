@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+  gap: 20px;
+}
+
+.card {
+  width: 315px;
+  height: 200px;
+  min-width: 300px;
+  background-color: #8e44ad;
+  color: #ffffff;
+  border-radius: 10px;
+  padding-left: 15px;
+  font-family: "Courier New", Courier, monospace;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart_name {
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 15px;
+  font-family: monospace;
+}
+
+.cart_num {
+  font-weight: 200px;
+  font-size: 25px;
+  margin-top: -5px;
+}
+
+.chip_img {
+  width: 50px;
+  padding-top: 35px;
+  margin-left: -5px;
+}
+
+.visa_img {
+  width: 100px;
+  height: 35px;
+  margin-right: 20px;
+  margin-top: -10px;
+}
+
+.valid {
+  font-size: 9px;
+}
+
+.valid,
+.date {
+  font-family: "Tahoma", sans-serif;
+}
+
+.card:nth-child(2) {
+  background-color: #009432;
+}
+
+.card:nth-child(3) {
+  background-color: #0652dd;
+}
+
+.card:nth-child(4) {
+  background-color: #161617;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.05); /* Yuxarı qaldırır və böyüdür */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25); /* Kölgə artır */
+}
