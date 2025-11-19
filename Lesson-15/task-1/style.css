@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  margin-inline: auto;
+  width: 75%;
+  max-width: 1140px;
+  position: relative;
+  margin-top: 20px;
+}
+.box-1 {
+  position: absolute;
+  top: -7px;
+  left: 100px;
+  background-color: blueviolet;
+  width: 300px;
+  height: 300px;
+}
+
+.box-2 {
+  position: absolute;
+  top: 20px;
+  left: 125px;
+  background-color: cadetblue;
+  width: 250px;
+  height: 250px;
+}
+
+.box-3 {
+  position: absolute;
+  top: 40px;
+  left: 150px;
+  background-color: chocolate;
+  width: 200px;
+  height: 200px;
+}
+
+.box-4 {
+  position: absolute;
+  top: 65px;
+  left: 175px;
+  background-color: blue;
+  width: 150px;
+  height: 150px;
+}
