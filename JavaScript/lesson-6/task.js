@@ -12,7 +12,7 @@ let reversedStr = "";
 let strLength = str.length;
 for (let i = 0; i < strLength; i++) {
     reversedStr += str[strLength - 1 - i];
-}
+} 
 
 console.log(reversedStr); */
 
@@ -496,9 +496,21 @@ Output: "b" */
 
 let str = prompt("Zəhmət olmasa söz daxil edin: => ");
 
+let result = "";
+
 for (let i = 0; i < str.length; i++) {
-    if(str[i])
-} */
+    let count = 0;
+    for (let j = 0; j < str.length; j++) {
+        if (str[i] === str[j]) {
+            count++;
+        }
+    }
+    if (count === 1) {
+        result += str[i];
+    }
+}
+console.log(result); */
+
 
 
 /* ## 27. Eynisi olmayan simvolları çıxart
