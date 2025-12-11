@@ -506,6 +506,30 @@ for (let i = 0; i < str.length; i++) {
 Input: "aabbcdeeff"
 Output: "cd" */
 
+/* const prompt = require("prompt-sync")();
+let str = prompt("Zəhmət olmasa söz daxil edin: => ");
+
+let frequency = {};
+
+for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (frequency[char]) {
+        frequency[char]++;
+    } else {
+        frequency[char] = 1;
+    }
+}
+
+let result = "";
+for (let char in frequency) {
+    if (frequency[char] === 1) {
+        result += char;
+    }
+}
+
+console.log(result); */
+
+
 /* ## 28. Sözləri uzunluğa görə say
 
 Input: "JS is super fast"
