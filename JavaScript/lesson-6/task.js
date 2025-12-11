@@ -461,25 +461,31 @@ Output:
 a → 1
 p → 2
 l → 1
-e → 1 sddddddddddddddddddddddddddddddddddddddddddddddd*/
+e → 1 
+*/
 
 /* const prompt = require("prompt-sync")();
 
 let str = prompt("Zəhmət olmasa söz daxil edin: => ");
 
-let count = 0;
-let letter = "";
+let frequency = {};
+
 
 for (let i = 0; i < str.length; i++) {
-    for (let j = 0; j < i + 1; j++) {
-        if (str[i] === str[j]) {
-            count++;
-            letter = str[i];
-        }
-    }
-    console.log(`${letter} -> ${count}`);
 
+    let char = str[i];
+    if (frequency[char]) {
+        frequency[char]++;
+    } else {
+        frequency[char] = 1;
+    }
+
+}
+
+for (let char in frequency) {
+    console.log(`${char} → ${frequency[char]}`);
 } */
+
 
 /* ## 26. Stringdə olan unikal hərfləri tap
 
