@@ -312,6 +312,36 @@ console.log(newWord); */
 Input: "aaabbccccd"
 Output: "cccc" */
 
+/* const prompt = require("prompt-sync")();
+
+let str = prompt("Zəhmət olmasa söz daxil edin: => ");
+
+let maxChar = "";
+let maxLength = "";
+
+let currentChar = "";
+let currentLength = "";
+
+
+for (let i = 0; i < str.length; i++) {
+
+    if (str[i] === currentChar) {
+        currentLength++;
+    } else {
+        currentChar = str[i];
+        currentLength = 1;
+    }
+    if (currentLength > maxLength) {
+        maxLength = currentLength;
+        maxChar = currentChar;
+    }
+
+}
+
+console.log(maxChar.repeat(maxLength)); */
+
+
+
 /* ## 19. Palindrome olub-olmadığını yoxla
 
 Input: "level"
