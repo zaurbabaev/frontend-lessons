@@ -10,7 +10,8 @@ REGEX() */
 
 console.log(countOfLetters('15263538479359486()-=":!@#$%^&*()asdj')); */
 
-/* 
+/*
+ 
 Task-12 
 Verilmiş ədədin sadə olub-olmadığını yoxlayan `isPrime()` funksiyasını yazın.
 Məsələn, `isPrime(7)` çağırıldıqda `true`, `isPrime(8)` çağırıldıqda `false` qaytarmalıdır. */
