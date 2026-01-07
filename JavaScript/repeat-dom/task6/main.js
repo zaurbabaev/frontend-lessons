@@ -1,6 +1,10 @@
+"use strict"
+
 const formElem = document.querySelector("form");
 const tbody = document.querySelector("table tbody");
 const submitBtn = formElem.querySelector("button");
+const searchInput = document.getElementById("searchInput");
+
 
 let users = [];
 let id = 0;
@@ -19,7 +23,8 @@ formElem.addEventListener("submit", e => {
         alert("Bütün xanaları doldurun");
         return;
     }
-    
+
+
 
     if (!isEdit) {
         const userExist = users.find(user => user.email === email);
@@ -68,6 +73,17 @@ function deleteUser(id) {
     userRender();
 }
 
+searchInput.addEventListener("input", () => {
+    const val = searchInput.value.trim().toLowerCase();
+    const filteredUsers = users.filter(user =>
+        user.fullName.toLowerCase().includes(val)
+        ||
+        user.email.toLowerCase().includes(val)
+    );
+    userRender(filteredUsers);
+})
+
+
 function editUser(id) {
     isEdit = true;
     globalId = id;
@@ -80,9 +96,9 @@ function editUser(id) {
 
 }
 
-function userRender() {
+function userRender(list = users) {
     tbody.innerHTML = ""
-    users.forEach(user => {
+    list.forEach(user => {
         tbody.innerHTML += `
         <tr class="hover:bg-gray-50">
               <td class="p-3 border">${user.id}</td>

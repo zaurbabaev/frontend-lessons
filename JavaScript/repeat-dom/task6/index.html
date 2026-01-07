@@ -57,8 +57,14 @@
 
       <!-- TABLE -->
       <div class="bg-white rounded-xl shadow p-6">
-        <h2 class="text-xl font-semibold mb-4">Users</h2>
-
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="text-xl font-semibold mb-4">Users</h2>
+          <input
+            class="w-70 border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
+            type="search"
+            id="searchInput"
+            placeholder="search...." />
+        </div>
         <div class="overflow-x-auto">
           <table class="w-full border-collapse">
             <thead>
@@ -71,9 +77,7 @@
               </tr>
             </thead>
 
-            <tbody class="text-sm">
-                
-            </tbody>
+            <tbody class="text-sm"></tbody>
           </table>
         </div>
       </div>
