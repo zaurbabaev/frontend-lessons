@@ -33,12 +33,6 @@ td {
   background-color: #fcfa13;
 }
 
-.value {
-  font-size: 22px;
-  line-height: 2.5em;
-  display: block;
-}
-
 .given-number {
   cursor: default;
   background-color: #cfcfcf;

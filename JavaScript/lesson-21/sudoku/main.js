@@ -1,16 +1,46 @@
-const table = document.querySelector("table");
-console.log(table);
+// const table = document.querySelector("table");
+// console.log(table); 
 
-const cells = document.querySelectorAll("td");
-console.log(cells.length);
+// const cells = document.querySelectorAll("td");
+// console.log(cells.length);
 
-cells.forEach(cell => {
-    cell.addEventListener("click", () => {
-        console.log("Xanaya klik olundu");
+const boxs = document.querySelectorAll("td:not(.given-number)");
+const nums = document.querySelectorAll(".number-control");
+const candidateInput = document.querySelector("#candidate-switch");
 
-        cells.forEach(c => c.classList.remove("selected"));
+let selectedItem;
 
-        cell.classList.add("selected");
+boxs.forEach(box => {
+    box.addEventListener("click", () => {
+
+        boxs.forEach(b => b.classList.remove("selected"));
+
+        box.classList.add("selected");
+
+        selectedItem = box;
+    })
+})
+
+nums.forEach(num => {
+    num.addEventListener("click", () => {
+
+        if (!selectedItem) return;
+
+        let val = num.innerText;
+
+        if (!candidateInput.checked) {
+            selectedItem.lastElementChild.innerText = val;
+        }
+        else {
+            let candidates = selectedItem.firstElementChild.textContent.split("");
+            if (candidates.includes(val)) {
+                candidates = candidates.filter(n => n !== val);
+            } else {
+                candidates.push(val);
+            }
+            selectedItem.firstElementChild.textContent = candidates.sort().join("");
+
+        }
     })
 })
 
