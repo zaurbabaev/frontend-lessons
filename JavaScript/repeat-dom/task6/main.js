@@ -4,13 +4,14 @@ const formElem = document.querySelector("form");
 const tbody = document.querySelector("table tbody");
 const submitBtn = formElem.querySelector("button");
 const searchInput = document.getElementById("searchInput");
+const sortBtns = document.querySelectorAll("sortBtn");
 
 
 let users = [];
 let id = 0;
 let isEdit = false;
 let globalId;
-
+let isSorted = false;
 
 
 formElem.addEventListener("submit", e => {
@@ -63,15 +64,7 @@ formElem.addEventListener("submit", e => {
     formElem.reset();
 })
 
-function deleteUser(id) {
-    users = users.filter(user => user.id !== id);
-    if (isEdit && globalId === id) {
-        isEdit = false;
-        globalId = null;
-        formElem.reset();
-    }
-    userRender();
-}
+
 
 searchInput.addEventListener("input", () => {
     const val = searchInput.value.trim().toLowerCase();
@@ -84,6 +77,23 @@ searchInput.addEventListener("input", () => {
 })
 
 
+
+fullNameBtn.addEventListener("click", (e) => {
+    if (!isSorted) {
+        users = users.sort((a, b) => {
+            return a.fullName.localeCompare(b.fullName);
+        });
+        isSorted = true;
+    }
+    else {
+        users = users.sort((a, b) => {
+            return b.fullName.localeCompare(a.fullName);
+        })
+        isSorted = false;
+    }
+    userRender();
+})
+
 function editUser(id) {
     isEdit = true;
     globalId = id;
@@ -94,6 +104,16 @@ function editUser(id) {
 
     submitBtn.textContent = "Update";
 
+}
+
+function deleteUser(id) {
+    users = users.filter(user => user.id !== id);
+    if (isEdit && globalId === id) {
+        isEdit = false;
+        globalId = null;
+        formElem.reset();
+    }
+    userRender();
 }
 
 function userRender(list = users) {
