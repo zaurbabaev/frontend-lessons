@@ -5,27 +5,31 @@ const tbody = document.querySelector("table tbody");
 const submitBtn = formElem.querySelector("button");
 const searchInput = document.getElementById("searchInput");
 const sortBtns = document.querySelectorAll(".sortBtn");
+const totalResult = document.getElementById("totalResult");
+const btns = document.getElementById("btns");
 
 let users = [];
+const PAGE_SIZE = 10;
+let currentPage = 1;
+let lastList = [];
 
 
 let localData = JSON.parse(localStorage.getItem("users"));
-console.log(localData);
-
 if (localData) {
     users = localData;
     userRender();
 }
 
 let id = 0;
-let localId = JSON.parse(localStorage .getItem("id"));
+let localId = JSON.parse(localStorage.getItem("id"));
 if (localId) {
     id = localId;
 }
+
 let isEdit = false;
-let globalId;
+let globalId = null;
 
-
+// --------------------- Form submit -----------------------
 formElem.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -83,9 +87,15 @@ formElem.addEventListener("submit", e => {
 
 
 
-
+// --------------------- Search -----------------------
 searchInput.addEventListener("input", () => {
     const val = searchInput.value.trim().toLowerCase();
+
+    if (!val) {
+        userRender(users);
+        return;
+    }
+
     const filteredUsers = users.filter(user =>
         user.fullName.toLowerCase().includes(val)
         ||
@@ -96,54 +106,7 @@ searchInput.addEventListener("input", () => {
 
 
 
-/* fullNameBtn.addEventListener("click", (e) => {
-    if (!isSorted) {
-        users = users.sort((a, b) => {
-            return a.fullName.localeCompare(b.fullName);
-        });
-        isSorted = true;
-    }
-    else {
-        users = users.sort((a, b) => {
-            return b.fullName.localeCompare(a.fullName);
-        })
-        isSorted = false;
-    }
-    userRender();
-})
-
-let isSortedForEmail = false;
-emailBtn.addEventListener("click", (e) => {
-    if (!isSortedForEmail) {
-        users = users.sort((a, b) => {
-            return a.email.localeCompare(b.email)
-        });
-        isSortedForEmail = true;
-    } else {
-        users = users.sort((a, b) => {
-            return b.email.localeCompare(a.email)
-        });
-        isSortedForEmail = false;
-    }
-    userRender();
-}) */
-
-// let isSorted = {};
-
-/* sortBtns.forEach(btn => {
-    const key = btn.dataset.key;
-    isSorted[key] = false;
-
-    btn.addEventListener("click", () => {
-        users.sort((a, b) => {
-            return isSorted[key] ? b[key].localeCompare(a[key])
-                : a[key].localeCompare(b[key]);
-        });
-        isSorted[key] = !isSorted[key];
-        userRender();
-    });
-}); */
-
+// --------------------- Sorting -----------------------
 let sortState = {};
 
 sortBtns.forEach(btn => {
@@ -171,7 +134,7 @@ sortBtns.forEach(btn => {
             icon.textContent = "▲";
         }
         userRender();
-    })
+    });
 });
 
 function editUser(id) {
@@ -198,12 +161,30 @@ function deleteUser(id) {
     }
     localStorage.setItem("users", JSON.stringify(users));
 
+    const totalPage = Math.ceil(users.length / PAGE_SIZE) || 1;
+    if (currentPage > totalPage) {
+        currentPage = totalPage;
+    }
+
     userRender();
 }
 
-function userRender(list = users) {
+// --------------------- User Render -----------------------
+function userRender(list = users, resetPage = true) {
+    lastList = list;
+    if (resetPage) currentPage = 1;
+    renderTable();
+    renderPagination();
+}
+
+function renderTable() {
+
     tbody.innerHTML = ""
-    list.forEach(user => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const end = currentPage * PAGE_SIZE;
+    const pageItems = lastList.slice(start, end);
+
+    pageItems.forEach(user => {
         tbody.innerHTML += `
         <tr class="hover:bg-gray-50">
               <td class="p-3 border">${user.id}</td>
@@ -224,5 +205,55 @@ function userRender(list = users) {
               </td>
             </tr>
         `
-    })
+    });
+
+    totalResult.innerText = lastList.length;
 }
+
+// --------------------- Pagination Render -----------------------
+function renderPagination() {
+    btns.innerHTML = "";
+    const totalPage = Math.ceil(lastList.length / PAGE_SIZE) || 1;
+
+    // Prev button
+    const prev = document.createElement("button")
+    prev.textContent = "Prev";
+    prev.disabled = currentPage === 1;
+    prev.className = "w-16 h-10 mx-1 bg-gray-300 text-black rounded hover:bg-blue-400";
+    prev.addEventListener("click", () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderTable();
+            renderPagination();
+        }
+    });
+    btns.appendChild(prev);
+
+    // Page buttons
+    for (let i = 1; i <= totalPage; i++) {
+        const button = document.createElement("button");
+        button.textContent = i;
+        button.className = `w-10 h-10 mx-1 rounded ${i === currentPage ? 'bg-blue-600 text-white' : 'bg-gray-300 text-white'}`;
+        button.addEventListener("click", () => {
+            currentPage = i;
+            renderTable();
+            renderPagination();
+        });
+        btns.appendChild(button);
+    }
+
+    // Next button
+    const next = document.createElement("button");
+    next.textContent = "Next";
+    next.disabled = currentPage === totalPage;
+    next.className = "w-16 h-10 mx-1 bg-gray-300 text-black rounded hover:bg-blue-400";
+    next.addEventListener("click", () => {
+        if (currentPage < totalPage) {
+            currentPage++;
+            renderTable();
+            renderPagination();
+        }
+    });
+    btns.appendChild(next);
+}
+
