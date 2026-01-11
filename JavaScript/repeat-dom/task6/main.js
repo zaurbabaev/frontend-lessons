@@ -4,14 +4,14 @@ const formElem = document.querySelector("form");
 const tbody = document.querySelector("table tbody");
 const submitBtn = formElem.querySelector("button");
 const searchInput = document.getElementById("searchInput");
-const sortBtns = document.querySelectorAll("sortBtn");
+const sortBtns = document.querySelectorAll(".sortBtn");
 
 
 let users = [];
 let id = 0;
 let isEdit = false;
 let globalId;
-let isSorted = false;
+// let isSorted = false;
 
 
 formElem.addEventListener("submit", e => {
@@ -78,7 +78,7 @@ searchInput.addEventListener("input", () => {
 
 
 
-fullNameBtn.addEventListener("click", (e) => {
+/* fullNameBtn.addEventListener("click", (e) => {
     if (!isSorted) {
         users = users.sort((a, b) => {
             return a.fullName.localeCompare(b.fullName);
@@ -93,6 +93,68 @@ fullNameBtn.addEventListener("click", (e) => {
     }
     userRender();
 })
+
+let isSortedForEmail = false;
+emailBtn.addEventListener("click", (e) => {
+    if (!isSortedForEmail) {
+        users = users.sort((a, b) => {
+            return a.email.localeCompare(b.email)
+        });
+        isSortedForEmail = true;
+    } else {
+        users = users.sort((a, b) => {
+            return b.email.localeCompare(a.email)
+        });
+        isSortedForEmail = false;
+    }
+    userRender();
+}) */
+
+// let isSorted = {};
+
+/* sortBtns.forEach(btn => {
+    const key = btn.dataset.key;
+    isSorted[key] = false;
+
+    btn.addEventListener("click", () => {
+        users.sort((a, b) => {
+            return isSorted[key] ? b[key].localeCompare(a[key])
+                : a[key].localeCompare(b[key]);
+        });
+        isSorted[key] = !isSorted[key];
+        userRender();
+    });
+}); */
+
+let sortState = {};
+
+sortBtns.forEach(btn => {
+    const key = btn.dataset.key;
+    const icon = btn.querySelector(".sort-icon");
+    sortState[key] = null;
+
+    btn.addEventListener("click", () => {
+        sortBtns.forEach(b => {
+            if (b !== btn) {
+                const i = b.querySelector(".sort-icon");
+                i.textContent = "↕";
+                sortState[b.dataset.key] = null;
+            }
+        });
+
+        if (sortState[key] === "asc") {
+            users.sort((a, b) => b[key].localeCompare(a[key]));
+            sortState[key] = "desc";
+            icon.textContent = "▼";
+        }
+        else {
+            users.sort((a, b) => a[key].localeCompare(b[key]));
+            sortState[key] = "asc";
+            icon.textContent = "▲";
+        }
+        userRender();
+    })
+});
 
 function editUser(id) {
     isEdit = true;

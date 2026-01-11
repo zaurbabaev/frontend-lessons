@@ -1,4 +1,4 @@
-const datas = [
+const data = [
     {
         "id": "2-lou-malnatis-deep-dish-pizzas",
         "img": "https://goldbelly.imgix.net/uploads/showcase_media_asset/image/97981/2-lou-malnatis-deep-dish-pizzas.bf0fe065d251a9cca3925b269d443a27.jpg?ixlib=react-9.0.2&auto=format&ar=1%3A1",
@@ -7,6 +7,7 @@ const datas = [
         "price": 67.99,
         "rate": 4,
         "country": "Chicago, IL"
+
     },
     {
         "id": "23699-choose-your-own-thin-crust-pizza-4-pack",
@@ -487,27 +488,60 @@ const datas = [
     }
 ]
 
-const container = document.querySelector(".container");
-const total = document.querySelector("#total");
+const pizzas = document.querySelector(".pizzas");
+const searchInput = document.getElementById("searchInput");
+const quickBasket = document.querySelector(".quick-basket");
+const basketModal = document.querySelector(".basket-modal");
+const quickBasketCard = document.querySelector(".quick-basket-card");
 
-total.textContent = `Total data: ${datas.length} ədəd pizza`;
 
 
-datas.forEach((item) => {
 
-    container.innerHTML += `
-     <div class="card">
-            <div class="image-container">
-                 <img src="${item.img}" alt="${item.name}"
+
+
+function rendered(list = data) {
+    pizzas.innerHTML = ""
+    list.forEach(item => {
+        pizzas.innerHTML += `
+         <div class="pizza">
+             <img src="${item.img}" alt="${item.name}"
                  onerror="this.onerror=null; this.src='noImage.png';">
-            </div>
-            <div class="card-content">
-                <h2>${item.name}'s</h2>
-                <p class="price">Price: ${item.price} AZN</p>
+             <h3>${item.name}</h3>
+           <div>
+                <span>${item.price} AZN</span>
+                <button onclick="addPizzaToBasket(${item.id})">
+                    +
+                </button>
             </div>
         </div>
     `
+    })
+}
+
+rendered();
+
+searchInput.addEventListener("input", () => {
+    const value = searchInput.value.trim().toLowerCase();
+    const filteredProd = data.filter(prod =>
+        prod.name.toLowerCase().includes(value)
+    );
+    console.log(filteredProd);
+
+    rendered(filteredProd);
+});
+
+quickBasket.addEventListener("click", () => {
+    basketModal.style.display = "block";
 })
+
+
+basketModal.addEventListener("click", (e) => {
+    if (e.target === basketModal) {
+        basketModal.style.display = "none";
+    }
+})
+
+
 
 
 

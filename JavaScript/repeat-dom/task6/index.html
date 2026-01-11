@@ -70,8 +70,18 @@
             <thead>
               <tr class="bg-gray-100 text-left text-sm">
                 <th class="p-3 border">ID</th>
-                <th class="sortBtn p-3 border" id="fullNameBtn">Full Name</th>
-                <th class="sortBtn p-3 border" id="emailBtn">Email</th>
+                <th class="sortBtn p-3 border" data-key="fullName">
+                  <div class="flex items-center gap-1">
+                    Full Name
+                    <span class="sort-icon text-xs">↕</span>
+                  </div>
+                </th>
+                <th class="sortBtn p-3 border" data-key="email">
+                  <div class="flex items-center gap-1">
+                    Email
+                    <span class="sort-icon text-xs">↕</span>
+                  </div>
+                </th>
                 <th class="p-3 border">Password</th>
                 <th class="p-3 border text-center">Actions</th>
               </tr>
