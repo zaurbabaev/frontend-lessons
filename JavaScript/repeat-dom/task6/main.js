@@ -6,16 +6,29 @@ const submitBtn = formElem.querySelector("button");
 const searchInput = document.getElementById("searchInput");
 const sortBtns = document.querySelectorAll(".sortBtn");
 
-
 let users = [];
+
+
+let localData = JSON.parse(localStorage.getItem("users"));
+console.log(localData);
+
+if (localData) {
+    users = localData;
+    userRender();
+}
+
 let id = 0;
+let localId = JSON.parse(localStorage .getItem("id"));
+if (localId) {
+    id = localId;
+}
 let isEdit = false;
 let globalId;
-// let isSorted = false;
 
 
 formElem.addEventListener("submit", e => {
     e.preventDefault();
+
     const fullName = formElem.fullName.value.trim();
     const email = formElem.email.value.trim();
     const password = formElem.password.value.trim();
@@ -25,23 +38,20 @@ formElem.addEventListener("submit", e => {
         return;
     }
 
-
-
     if (!isEdit) {
         const userExist = users.find(user => user.email === email);
         if (userExist) {
-            alert("Bu email artiq istifade olunub");
-            return
+            alert("Bu email artıq istifadə olunub");
+            return;
         }
 
-        users.push(
-            {
-                id: ++id,
-                fullName,
-                email,
-                password
-            }
-        )
+        users.push({
+            id: ++id,
+            fullName,
+            email,
+            password
+        });
+        localStorage.setItem("id", id);
     }
     else {
         const emailExist = users.find(
@@ -54,15 +64,23 @@ formElem.addEventListener("submit", e => {
         }
 
         const userExist = users.find(user => user.id === globalId);
+        if (!userExist) return;
+
         userExist.fullName = fullName;
         userExist.email = email;
         userExist.password = password;
-        isEdit = false;
     }
 
-    userRender();
+    localStorage.setItem("users", JSON.stringify(users));
+
+    isEdit = false;
+    globalId = null;
+    submitBtn.textContent = "Add User";
     formElem.reset();
-})
+
+    userRender();
+});
+
 
 
 
@@ -159,14 +177,17 @@ sortBtns.forEach(btn => {
 function editUser(id) {
     isEdit = true;
     globalId = id;
+
     const foundUser = users.find(user => user.id === id);
+    if (!foundUser) return;
+
     formElem.fullName.value = foundUser.fullName;
     formElem.email.value = foundUser.email;
     formElem.password.value = foundUser.password;
 
     submitBtn.textContent = "Update";
-
 }
+
 
 function deleteUser(id) {
     users = users.filter(user => user.id !== id);
@@ -175,6 +196,8 @@ function deleteUser(id) {
         globalId = null;
         formElem.reset();
     }
+    localStorage.setItem("users", JSON.stringify(users));
+
     userRender();
 }
 
