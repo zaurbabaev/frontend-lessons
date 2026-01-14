@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DummyJSON Explorer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+      <!-- HEADER -->
+      <div class="mb-10">
+        <h1 class="text-3xl font-bold text-gray-800">DummyJSON Explorer</h1>
+        <p class="text-gray-500 mt-1">Products • Users • Carts</p>
+      </div>
+
+      <!-- TABS -->
+      <div id="btns">
+        <div class="flex gap-3 mb-8">
+          <button
+            class="px-6 py-2 rounded-full bg-blue-600 text-white font-medium shadow"
+            id="products"
+            data-tab="products">
+            Products
+          </button>
+
+          <button
+            class="px-6 py-2 rounded-full bg-white text-gray-400 border cursor-not-allowed hover:text-gray-600 hover:border-gray-400 transition"
+            id="users"
+            data-tab="users">
+            Users
+          </button>
+
+          <button
+            class="px-6 py-2 rounded-full bg-white text-gray-400 border cursor-not-allowed hover:text-gray-600 hover:border-gray-400 transition"
+            id="carts"
+            data-tab="carts">
+            Carts
+          </button>
+        </div>
+      </div>
+
+      <!-- PRODUCTS -->
+      <div class="max-w-7xl mx-auto px-6 py-10" id="contents">
+        <div class="hidden">
+          <div
+            data-content="products"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- PRODUCT CARD -->
+            
+          </div>
+        </div>
+
+        <!-- USERS -->
+        <div class="hidden">
+          <div data-content="users">
+            
+          </div>
+        </div>
+
+        <!-- CARTS -->
+        <div class="hidden">
+          <div data-content="carts">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="promise.js"></script>
+  </body>
+</html>
