@@ -1,30 +1,15 @@
 import Card from "./Card"
+import { cars } from "../data"
 
 function Cars(){
     return <div className="max-w-285 w-[80%] mx-auto grid grid-cols-4 gap-7">
-        {/* <Car carName="Mercedes E300, 2.0L, 2026 il"
-        image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq-QAwKD-zSi8iqYKs0JkhdZPsH7P80VssXKhihDZE4_-eCFcL"/>
-
-        <Car carName="Mercedes E300, 2.0L, 2026 il"
-        image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq-QAwKD-zSi8iqYKs0JkhdZPsH7P80VssXKhihDZE4_-eCFcL"/>
-
-        <Car carName="Mercedes E300, 2.0L, 2026 il"
-        image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq-QAwKD-zSi8iqYKs0JkhdZPsH7P80VssXKhihDZE4_-eCFcL"/>
-
-        <Car carName="Mercedes E300, 2.0L, 2026 il"
-        image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq-QAwKD-zSi8iqYKs0JkhdZPsH7P80VssXKhihDZE4_-eCFcL"/> */}
-
-            <Card imgUrl={"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq-QAwKD-zSi8iqYKs0JkhdZPsH7P80VssXKhihDZE4_-eCFcL"}
-            name={"Mercedes E300, 2.0L, 2026 il"}/>
-
-            <Card imgUrl={"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq-QAwKD-zSi8iqYKs0JkhdZPsH7P80VssXKhihDZE4_-eCFcL"}
-            name={"Mercedes E300, 2.0L, 2026 il"}/>
-
-            <Card imgUrl={"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq-QAwKD-zSi8iqYKs0JkhdZPsH7P80VssXKhihDZE4_-eCFcL"}
-            name={"Mercedes E300, 2.0L, 2026 il"}/>
-
-            <Card imgUrl={"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQq-QAwKD-zSi8iqYKs0JkhdZPsH7P80VssXKhihDZE4_-eCFcL"}
-            name={"Mercedes E300, 2.0L, 2026 il"}/>
+       {cars.map(({imgUrl, title, price,id})=> <Card
+        key={id}
+        title={title}
+        price={price}
+        imgUrl={imgUrl}
+        />
+       )}
             
     </div>
 } 
