@@ -1,4 +1,4 @@
-import UserList from "./components/userList";
+import UserList from "./components/UserList";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -11,5 +11,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
