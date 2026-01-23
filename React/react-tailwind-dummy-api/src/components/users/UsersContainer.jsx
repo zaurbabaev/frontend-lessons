@@ -7,10 +7,19 @@ export default function UsersContainer() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    getUsers()
-      .then((res) => setUsers(res.data.users))
-      .finally(setLoading(false));
+    const loadUsers = async () => {
+      try {
+        setLoading(true);
+        const res = await getUsers();
+        setUsers(res.data.users);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadUsers();
   }, []);
 
   return <UsersView data={users} loading={loading} />;

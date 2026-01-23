@@ -7,10 +7,18 @@ export default function ProductsContainer() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    getProducts()
-      .then((res) => setProducts(res.data.products))
-      .finally(() => setLoading(false));
+    const loadProducts = async () => {
+      try {
+        setLoading(true);
+        const res = await getProducts();
+        setProducts(res.data.products);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadProducts();
   }, []);
 
   return <ProductsView data={products} loading={loading} />;

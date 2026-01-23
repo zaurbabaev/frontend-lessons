@@ -7,10 +7,18 @@ export default function CartsContainer() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    getCarts()
-      .then((res) => setCarts(res.data.carts))
-      .finally(setLoading(false));
+    const loadCarts = async () => {
+      try {
+        setLoading(true);
+        const res = await getCarts();
+        setCarts(res.data.carts);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadCarts();
   }, []);
 
   return <CartsView data={carts} loading={loading} />;
