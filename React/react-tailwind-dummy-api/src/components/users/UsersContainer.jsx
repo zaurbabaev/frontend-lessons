@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUsers } from "../services/dummyService";
+import { getUsers } from "../../services/dummyService";
 import UsersView from "./UsersView";
 
 export default function UsersContainer() {

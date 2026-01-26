@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCarts } from "../services/dummyService";
+import { getCarts } from "../../services/dummyService";
 import CartsView from "./CartsView";
 
 export default function CartsContainer() {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../services/dummyService";
+import { getProducts } from "../../services/dummyService";
 import ProductsView from "./ProductsView";
 
 export default function ProductsContainer() {
