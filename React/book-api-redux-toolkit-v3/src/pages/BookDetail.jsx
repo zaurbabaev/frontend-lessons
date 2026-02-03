@@ -72,11 +72,11 @@ export default function BookDetail() {
 
             <div className="flex-1">
               <h1 className="text-4xl font-bold text-gray-800 mb-3">
-                {book.title}
+                {book.book.title}
               </h1>
               <p className="text-xl text-gray-600 flex items-center gap-2 mb-4">
                 <span>✍️</span>
-                <span className="font-medium">{book.author}</span>
+                <span className="font-medium">{book.book.author}</span>
               </p>
 
               <div className="flex items-center gap-4">
