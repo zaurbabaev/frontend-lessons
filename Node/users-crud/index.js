@@ -89,11 +89,11 @@ let users = [
   },
 ];
 
-app.get("/users", (request, response) => {
+app.get("/users", (_, response) => {
   response.json(users);
 });
 
-app.post("/users", (request, respose) => {
+app.post("/users", (request, response) => {
   const { name, surname, username, age, email } = request.body;
   users.push({
     id: uidv4(),
@@ -103,7 +103,7 @@ app.post("/users", (request, respose) => {
     age,
     email,
   });
-  respose.status(201).json({
+  response.status(201).json({
     message: "User created",
   });
 });
@@ -112,7 +112,7 @@ app.get("/users/:id", (request, response) => {
   const { id } = request.params;
   const foundUser = users.find((user) => user.id === id);
   if (!foundUser) {
-    response.status(404).json({
+    return response.status(404).json({
       message: "User not found",
     });
   }
@@ -123,18 +123,18 @@ app.put("/users/:id", (request, response) => {
   const { id } = request.params;
   const { name, surname, username, age, email } = request.body;
 
-  const foundUser = users.find((user) => (user.id = id));
+  const foundUser = users.find((user) => user.id === id);
   if (!foundUser) {
-    response.status(404).json({
+    return response.status(404).json({
       message: "User not found",
     });
   }
 
-  foundUser.name = name;
-  foundUser.surname = surname;
-  foundUser.username = username;
-  foundUser.age = age;
-  foundUser.email = email;
+  if (name !== undefined) foundUser.name = name;
+  if (surname !== undefined) foundUser.surname = surname;
+  if (username !== undefined) foundUser.username = username;
+  if (age !== undefined) foundUser.age = age;
+  if (email !== undefined) foundUser.email = email;
 
   response.json({
     message: "User edit successfully",
@@ -145,7 +145,7 @@ app.delete("/users/:id", (request, response) => {
   const { id } = request.params;
   const foundUser = users.find((user) => user.id === id);
   if (!foundUser) {
-    response.status(404).json({
+    return response.status(404).json({
       message: "User not found",
     });
   }
