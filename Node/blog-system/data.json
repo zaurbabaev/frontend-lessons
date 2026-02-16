@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "x",
+      "blogs": [1, 2, 3, 4],
+      "comments": [1, 2, 3]
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "First blog",
+      "desc": "Rhis is the content of the first blog",
+      "userId": 1,
+      "comments": [1, 2]
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "desc": "Great blog",
+      "userId": 1,
+      "blogId": 1
+    }
+  ]
+}
